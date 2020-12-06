@@ -7,6 +7,7 @@ var Client = require('./client')
 exports.router = (()=>{
     var ApiRouter = express.Router();
     ApiRouter.route('/client/scanner/generate').post(Client.generateur)
-    ApiRouter.route('test').get(()=>console.log("test"))
+    ApiRouter.route('/client/scanner/encode').post(Client.encodeString)
+    ApiRouter.route('/client/scanner/decode').post(Client.decodeString)
     return ApiRouter
 })();
