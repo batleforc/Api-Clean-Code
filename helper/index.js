@@ -4,5 +4,6 @@
 module.exports ={
     DateHandler : require('./date'),
     Validator : require('./validator'),
-    FormatString: require('./formatString')
+    FormatString: require('./formatString'),
+    Base64 : require('./base64')
 }
