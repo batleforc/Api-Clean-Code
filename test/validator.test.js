@@ -1,5 +1,28 @@
 const validator = require('../helper/validator')
 
+test('Test  not null or undefined (true mode) ',()=>{
+    expect(validator.notNullOrUndefined("10")).toBe(true)
+    expect(validator.notNullOrUndefined("1")).toBe(true)
+    expect(validator.notNullOrUndefined("0")).toBe(true)
+    expect(validator.notNullOrUndefined("-1")).toBe(true)
+    expect(validator.notNullOrUndefined("Bonjour")).toBe(true)
+    expect(validator.notNullOrUndefined("Je suis une chaine de charactére vraiment difficile et je vais te poser une question ?!")).toBe(true)
+    expect(validator.notNullOrUndefined(-1)).toBe(true)
+    expect(validator.notNullOrUndefined(0)).toBe(true)
+    expect(validator.notNullOrUndefined(NaN)).toBe(true)
+    expect(validator.notNullOrUndefined([])).toBe(true)
+    expect(validator.notNullOrUndefined({})).toBe(true)
+    expect(validator.notNullOrUndefined(()=>{})).toBe(true)
+    expect(validator.notNullOrUndefined("")).toBe(true)
+    expect(validator.notNullOrUndefined(" ")).toBe(true)
+})
+
+test('Test  not null or undefined (false mode) ',()=>{
+    expect(validator.notNullOrUndefined(null)).toBe(false)
+    expect(validator.notNullOrUndefined(undefined)).toBe(false)
+    expect(validator.notNullOrUndefined()).toBe(false)
+})
+
 test('Test not null or undefined of an integer (true mode)',()=>{
     expect(validator.notNullOrUndefinedOranInteger(10)).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger("10")).toBe(true)
@@ -9,7 +32,6 @@ test('Test not null or undefined of an integer (true mode)',()=>{
     expect(validator.notNullOrUndefinedOranInteger("0")).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger(-1)).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger("-1")).toBe(true)
-
     expect(validator.notNullOrUndefinedOranInteger(Math.PI)).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger(`${Math.PI}`)).toBe(true)
 })
@@ -22,6 +44,8 @@ test('Test  not null or undefined of an integer (false mode) ',()=>{
     expect(validator.notNullOrUndefinedOranInteger({})).toBe(false)
     expect(validator.notNullOrUndefinedOranInteger()).toBe(false)
     expect(validator.notNullOrUndefinedOranInteger(()=>{})).toBe(false)
+    expect(validator.notNullOrUndefinedOranInteger("Je suis une chaine de charactére vraiment difficile et je vais te poser une question ?!")).toBe(false)
+
 })
 
 test('Test not null or undefined of an string (true mode)',()=>{
