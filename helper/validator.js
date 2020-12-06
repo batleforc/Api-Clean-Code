@@ -8,7 +8,7 @@ module.exports = {
      * @param {Object} toTreat 
      * @returns {Bool} return if totreat is not null or undefined
      */
-    notNullOrUndefined : (toTreat) => toTreat!==null&toTreat!==undefined,
+    notNullOrUndefined : (toTreat) => toTreat!==null&&toTreat!==undefined,
     /**
      * * Validator that allow the user to know if the string  parameter is not null, undefined or empty
      * @param {String} toTreat 
