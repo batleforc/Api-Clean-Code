@@ -9,7 +9,6 @@ class Api{
             res.setHeader('Access-Control-Allow-Origin',`localhost:${port}`);
             res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-            console.log(req.originalUrl)
             next();
         });
         
@@ -27,9 +26,9 @@ class Api{
          * Path that handle every other wrong path
          */
         this.app.use((req,res)=>{
-            res.status(404).json({
+            res.status(418).json({
                 status: "Nothing here",
-                message: "three case... .the first one the path that you aim doesn't exist anymore or not yet, the second one it has never existed and the third one you misspelled it",
+                message: "three case...the first one the path that you aim doesn't exist anymore or not yet, the second one it has never existed and the third one you misspelled it",
                 message2: "I'm a teapot"
             })
         })
