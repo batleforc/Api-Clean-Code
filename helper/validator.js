@@ -14,7 +14,7 @@ module.exports = {
      * @param {String} toTreat 
      * @returns {Bool} return if  toTreat is not null, not undefined and not empty or filled with a space
      */
-    notNullUndefinedOrEmptyString : (toTreat) =>module.exports.notNullOrUndefined(toTreat)&&toTreat!==""&&toTreat!==" ",
+    notNullUndefinedOrEmptyString : (toTreat) =>module.exports.notNullOrUndefined(toTreat)&&toTreat!==""&&toTreat!==" "&&typeof toTreat ==="string",
     /**
      * * Validator that allow the user to know if the parameter is not null, undefined or not a number
      * @param {Number} toTreat 
