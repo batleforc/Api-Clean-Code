@@ -8,13 +8,18 @@ module.exports = {
      * @returns {Void} This function return nothing
      */
     generateur : async (req,res)=>{
-        console.log("test")
         if(Validator.notNullUndefinedOrEmptyString(req.body.user)||Validator.notNullOrUndefinedOranInteger(req.body.scanner)){
             return res.status(400).json({status:"Failure",message:"One or more parameter need to be in the body or isn't correct"})
         }
-        console.log(Base64(req.body.user))
-        var result = FormatString(req.body.user,req.body.scanner,DateHandler.getStringDateFormatAJHMS())
-        return res.status(200).json({status:"Ok",result:result})
+        try{
+            var result = FormatString(base64.base64ToString(req.body.user),req.body.scanner,DateHandler.getStringDateFormatAJHMS())
+            return res.status(200).json({status:"Ok",result:base64.stringToBase64(result)})
+        }catch(error){
+            if(error instanceof TypeError)
+                return res.status(400).json({status:"Failure",message:`The username or the scanner is not of the good type, please consider doing the thing correctly`})
+            else
+                return res.status(500).json({status:"Failure",message:`The username or the scanner has throw an unexpected error please contact you api owner and pass the Error parameter to him`,Error:error})
+        }
     },
     /**
      * * Function that encode a string to base64
