@@ -20,5 +20,5 @@ module.exports = {
      * @param {Number} toTreat 
      * @returns {Bool} return if toTreat is not null or undefined and is an integer
      */
-    notNullOrUndefinedOranInteger : (toTreat) => module.exports.notNullOrUndefined(toTreat)&&Number.isInteger(toTreat)
+    notNullOrUndefinedOranInteger : (toTreat) => module.exports.notNullOrUndefined(toTreat)&&(Number.isInteger(toTreat)||!isNaN(parseInt(toTreat)))
 }
