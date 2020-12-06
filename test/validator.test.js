@@ -1,6 +1,6 @@
 const validator = require('../helper/validator')
 
-test('Test getDayOfTheYear',()=>{
+test('Test not null or undefined or an integer',()=>{
     expect(validator.notNullOrUndefinedOranInteger(10)).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger("10")).toBe(true)
     expect(validator.notNullOrUndefinedOranInteger(1)).toBe(true)
