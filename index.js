@@ -5,4 +5,7 @@ const app = new Api(port)
 
 var http = require('http').createServer(app.getApp());
 
-http.listen(port)
+http.listen(port,(err)=>{
+    if(err) return console.log(err)
+    console.log(`The api is listening to the port ${port}`)
+})
