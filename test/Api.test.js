@@ -1,5 +1,6 @@
 const app = require('../app')
 const request = require('supertest')
+const {Base64} = require('../helper/')
 const Api = new app()
 const get_request_generate = ()=> request(Api.getApp()).post('/client/scanner/generate')
 test('Call of the /client/scanner/generate without parameter',done =>{
@@ -64,9 +65,8 @@ test('Call of the /client/scanner/generate without scanner and user empty',done 
 test('Call of the /client/scanner/generate without scanner and user empty',done =>{
     get_request_generate()
         .set('content-type', 'application/json')
-        .send({user:"maxime",scanner:"10"})
+        .send({user:Base64.stringToBase64("maxime"),scanner:"10"})
         .then(response=>{
-            console.log(response.body)
             expect(response.statusCode).toBe(200);
             done();
         })

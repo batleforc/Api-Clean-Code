@@ -13,7 +13,7 @@ module.exports = {
         }
         try{
             var result = FormatString.agregateString(base64.base64ToString(req.body.user),req.body.scanner,DateHandler.getStringDateFormatAJHMS())
-            return res.status(200).json({status:"Ok",result:base64.stringToBase64(result)})
+            return res.status(200).json({status:"Ok",result:base64.stringToBase64(result),username:base64.base64ToString(req.body.user)})
         }catch(error){
             if(error instanceof TypeError)
                 return res.status(400).json({status:"Failure",message:`The username or the scanner is not of the good type, please consider doing the thing correctly`,Error:error.message})
