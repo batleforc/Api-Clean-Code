@@ -14,7 +14,8 @@ class Api{
          * * This part allow some special verbose like get,post,options,put,patch and delete
          */
         this.app.use((req,res,next)=>{
-            res.setHeader('Access-Control-Allow-Origin',`localhost:${port}`);
+            if(port)
+                res.setHeader('Access-Control-Allow-Origin',`localhost:${port}`);
             res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
             next();
