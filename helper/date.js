@@ -8,7 +8,7 @@ module.exports ={
      * @returns {String} String contain the date
      */
     getStringDateFormatAJHMS : (date=null) =>{
-        var workingdate = date==null? Date.now(): date;
+        var workingdate = date==null? new Date(): date;
         return `${workingdate.getFullYear()}${module.exports.getDayOfTheYear(workingdate)}${workingdate.getHours()}${workingdate.getMinutes()}${workingdate.getSeconds()}`
     },
     /**
