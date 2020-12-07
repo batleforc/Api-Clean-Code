@@ -9,7 +9,7 @@ module.exports ={
      */
     getStringDateFormatAJHMS : (date=null) =>{
         var workingdate = date==null? Date.now(): date;
-        return `${workingdate.getFullYear()}${this.getDayOfTheYear(workingdate)}${workingdate.getFullYear()}${workingdate.getMinutes()}${workingdate.getSeconds()}`
+        return `${workingdate.getFullYear()}${module.exports.getDayOfTheYear(workingdate)}${workingdate.getHours()}${workingdate.getMinutes()}${workingdate.getSeconds()}`
     },
     /**
      * * Function that return the day of the year
@@ -21,9 +21,7 @@ module.exports ={
      * Please be aware of the fact that the considered answer is not the first one because this one seens more correct
      */
     getDayOfTheYear : (date) =>{
-        return (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
+        var toreturn = ((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000).toString();
+        return toreturn.length==3?toreturn:toreturn.length==2?"0"+toreturn:"00"+toreturn;
     },
-
-    
-
 }
