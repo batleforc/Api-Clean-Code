@@ -50,7 +50,7 @@ class Api{
         })
     }
     /**
-     * * Create a fonction that return the App
+     * * Fonction that return the App
      */
     getApp = ()=> this.app
 }
