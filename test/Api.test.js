@@ -62,12 +62,23 @@ test('Call of the /client/scanner/generate without scanner and user empty',done 
         })
 })
 
-test('Call of the /client/scanner/generate without scanner and user empty',done =>{
+test('Call of the /client/scanner/generate with scanner and user',done =>{
     get_request_generate()
         .set('content-type', 'application/json')
         .send({user:Base64.stringToBase64("maxime"),scanner:"10"})
         .then(response=>{
             expect(response.statusCode).toBe(200);
+            expect(response.body.username).toBe("maxime")
+            done();
+        })
+})
+test('Call of the /client/scanner/generate with scanner and user',done =>{
+    get_request_generate()
+        .set('content-type', 'application/json')
+        .send({user:Base64.stringToBase64("jojo"),scanner:"10"})
+        .then(response=>{
+            expect(response.statusCode).toBe(200);
+            expect(response.body.username).toBe("jojo");
             done();
         })
 })
