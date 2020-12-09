@@ -54,8 +54,8 @@ module.exports = {
             var decodedid =base64.base64ToString(req.body.idtraitement)
                 return res.status(200).json({
                     status:"Ok",
-                    result:decodedid===formatString.agregateString(req.body.user,req.body.scanner,req.body.date),
-                    request:req.body.idtraitement
+                    result:decodedid===formatString.agregateString(Base64.base64ToString(req.body.user),req.body.scanner,req.body.date),
+                    request:req.body.idtraitement,
                 })
         }catch(error){
             if(error instanceof TypeError)
