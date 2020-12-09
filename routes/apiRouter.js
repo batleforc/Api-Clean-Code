@@ -9,5 +9,6 @@ exports.router = (()=>{
     ApiRouter.route('/client/scanner/generate').post(Client.generateur)
     ApiRouter.route('/client/scanner/encode').post(Client.encodeString)
     ApiRouter.route('/client/scanner/decode').post(Client.decodeString)
+    ApiRouter.route('/client/scanner/validation').post(Client.validation)
     return ApiRouter
 })();
