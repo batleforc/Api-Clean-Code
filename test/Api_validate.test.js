@@ -101,6 +101,7 @@ test('Call of the /client/scanner/validate with scanner,user,date and a wrong id
             expect(response.body.result).toBe(false)
             done();
         })
+        .catch(err=>done(err))
 })
 
 test('Call of the /clients/scanner/validate and /clients/scanner/validate cross validation',done =>{
