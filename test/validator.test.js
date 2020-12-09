@@ -70,3 +70,30 @@ test('Test  not null or undefined of an string (false mode) ',()=>{
     expect(validator.notNullUndefinedOrEmptyString("")).toBe(false)
     expect(validator.notNullUndefinedOrEmptyString(" ")).toBe(false)
 })
+
+
+test('Test not null or undefined of an array of string (true mode)',()=>{
+    expect(validator.notNullUndefinedOrEmptyStringS("10")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("1")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("0")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("-1")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("Bonjour")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("Je suis une chaine de charactére vraiment difficile et je vais te poser une question ?!")).toBe(true)
+    expect(validator.notNullUndefinedOrEmptyStringS("Je suis une chaine de charactére vraiment difficile et je vais te poser une question ?!","test","plop")).toBe(true)
+    
+})
+
+test('Test  not null or undefined of an array of  string (false mode) ',()=>{
+    expect(validator.notNullUndefinedOrEmptyStringS(-1)).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(0)).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(null)).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(undefined)).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(NaN)).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS([])).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS({})).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS()).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(()=>{})).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS("")).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS(" ")).toBe(false)
+    expect(validator.notNullUndefinedOrEmptyStringS("test"," ")).toBe(false)
+})
