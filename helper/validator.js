@@ -16,6 +16,19 @@ module.exports = {
      */
     notNullUndefinedOrEmptyString : (toTreat) =>module.exports.notNullOrUndefined(toTreat)&&toTreat!==""&&toTreat!==" "&&typeof toTreat ==="string",
     /**
+     * * Validator that allow the user to know if an element of an array of string  parameter is not null, undefined or empty
+     * @param {...String} toTreat 
+     * @returns {Bool} return if an element of totreat is false or no
+     */
+    notNullUndefinedOrEmptyStringS :(...toTreat) =>{
+        if(toTreat.length===0) return false
+        else if(toTreat.length===1) return module.exports.notNullUndefinedOrEmptyString(toTreat[0])
+        else
+            return toTreat.reduce((previous,current)=>{
+                return previous&&module.exports.notNullUndefinedOrEmptyStringS(current)?true:false
+            })
+    },
+    /**
      * * Validator that allow the user to know if the parameter is not null, undefined or not a number
      * @param {Number} toTreat 
      * @returns {Bool} return if toTreat is not null or undefined and is an integer
